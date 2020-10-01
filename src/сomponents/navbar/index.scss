@@ -1,0 +1,20 @@
+@import "../../colors";
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: $blue-main;
+  font-size: 1.1rem;
+
+  &__item {
+    flex-basis: 10%;
+    margin-left: 10px;
+    padding: 10px 0;
+
+    a {
+      color: $yellow;
+    }
+  }
+}

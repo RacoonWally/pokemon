@@ -1,12 +1,19 @@
-import React, {Component} from "react";
+import React from "react";
+import NavBar from "../../сomponents/navbar";
+import PokemonList from "../../сomponents/pokemonList";
+import Header from "../../сomponents/header";
+import Footer from "../../сomponents/footer";
 
-class MainPage extends Component {
-    render() {
+const MainPage = () => {
+
         return(
             <div>
-                MainPage
+                <Header/>
+                <NavBar/>
+                <PokemonList/>
+                <Footer/>
             </div>
         )
-    }
-}
+};
+
 export default MainPage;

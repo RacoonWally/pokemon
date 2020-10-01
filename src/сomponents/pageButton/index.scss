@@ -1,0 +1,24 @@
+@import "../../colors";
+
+.page-button{
+
+  button{
+    margin-left: 5px;
+    color: $yellow;
+    background: $blue-main;
+    outline: none;
+    border-radius: 5px;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  &_active{
+
+    button {
+      background: $yellow;
+      color: $blue-main;
+    }
+  }
+}

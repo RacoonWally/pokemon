@@ -1,0 +1,26 @@
+@import 'colors';
+
+.text{
+  margin: 0;
+}
+
+.link{
+  text-decoration: none;
+  color: black;
+
+  &:hover{
+    cursor: pointer;
+    color: $aqua-link;
+  }
+}
+
+.title{
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.subtitle{
+  font-weight: bold;
+  margin: 0;
+}

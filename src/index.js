@@ -16,7 +16,7 @@ import createRootReducer from './reducers'
 
 const history = createBrowserHistory();
 
-// Регистрация Middeware для Асинхронных запросов
+
 const middlewares = [thunk, routerMiddleware(history)];
 
 const store = createStore(createRootReducer(history),

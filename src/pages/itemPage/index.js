@@ -1,13 +1,20 @@
 import React from "react";
 
 import './index.scss'
+import Header from "../../сomponents/header";
+import NavBar from "../../сomponents/navbar";
+import Footer from "../../сomponents/footer";
+import ItemBody from "../../сomponents/itemBody";
 
-const Item = () => {
+const ItemPage = () => {
     return (
         <div>
-            Item
+            <Header/>
+            <NavBar/>
+            <ItemBody/>
+            <Footer/>
         </div>
     )
 };
 
-export default Item;
+export default ItemPage;
