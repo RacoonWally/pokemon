@@ -1,7 +1,10 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux'
+import LoadingIndicator from 'react-loading-indicator'
+
 import {
-    fetchPokemonList
+    fetchPokemonList,
+    setCurrentPage
 } from "../../actions";
 
 import './index.scss'
@@ -11,41 +14,63 @@ import PageButtonList from "../pageButtonList";
 class PokemonList extends Component {
 
     componentDidMount() {
-        const {fetchPokemonList} = this.props;
-        fetchPokemonList(1)
+        const {fetchPokemonList, setCurrentPage, page} = this.props;
+        fetchPokemonList(page);
+        setCurrentPage(page);
     }
 
     render() {
+        const {pokemonList, loading} = this.props;
+        if (pokemonList !== undefined) {
+            return (
+                <div className='pokemon-list'>
+                    <div className='pokemon-list__cards'>
+                        {
+                            pokemonList.results.map((item, key) => {
+                                return (
+                                    <CardItem data={item} key={key}/>
+                                )
+                            })
+                        }
+                    </div>
+                    <PageButtonList/>
+                </div>
+            )
+        } else if (loading) {
+            return (
+                <div className='pokemon-list__loading'>
+                    <LoadingIndicator segmentWidth={20} segmentLength={5} spacing={12}/>
+                </div>
+            )
+
+        }
+
+
         return (
             <div className='pokemon-list'>
                 <div className='pokemon-list__cards'>
-                    <CardItem/>
-                    <CardItem/>
-                    <CardItem/>
-                    <CardItem/>
-                    <CardItem/>
-                    <CardItem/>
-                    <CardItem/>
-                    <CardItem/>
-                </div>
-                <PageButtonList/>
-            </div>
 
+                </div>
+            </div>
         )
+
+
     }
 
 
 }
 
 const mapStateToProps = (state) => {
-    const {pokemonList} = state.mainPage;
+    const {pokemonList, loading} = state.mainPage;
     return {
-        pokemonList
+        pokemonList,
+        loading
     }
 };
 
 const mapDispatchToProps = {
-    fetchPokemonList
+    fetchPokemonList,
+    setCurrentPage
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonList);

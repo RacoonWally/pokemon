@@ -10,12 +10,6 @@ import {
 
 class PageButtonList extends Component {
 
-
-    componentDidMount() {
-        const {setCurrentPage} = this.props;
-        setCurrentPage(1);
-    }
-
     render() {
         const {countArray, currentPage} = this.props;
         if (countArray !== undefined) {

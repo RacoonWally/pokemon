@@ -1,14 +1,13 @@
 import {LIMIT} from "../service";
 
-export const getPagesCount = (pages, limit = 50) => {
-    const count = pages / limit
+export const getPagesCount = (pages, limit = LIMIT) => {
+    const count = pages / limit;
     if (pages % limit === 0) {
         return count;
     } else {
         return count + 1;
     }
 };
-
 
 export const pagesArr = (count) => {
     const arr = [];
@@ -20,4 +19,14 @@ export const pagesArr = (count) => {
 
 export const calcOffset = (pageNumber) => {
     return (LIMIT * pageNumber) - LIMIT + 1;
+};
+
+
+export const getImageUrl = (item) => {
+    const {sprites} = {...item};
+    const {other} = {...sprites};
+    const {dream_world} = {...other};
+    const {front_default} = {...dream_world};
+
+    return front_default
 };

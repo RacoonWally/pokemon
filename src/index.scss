@@ -5,13 +5,16 @@
 }
 
 .link{
-  text-decoration: none;
   color: black;
 
   &:hover{
     cursor: pointer;
     color: $aqua-link;
   }
+}
+
+a{
+  text-decoration: none;
 }
 
 .title{

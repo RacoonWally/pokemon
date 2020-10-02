@@ -2,13 +2,20 @@ import {
     FETCH_POKEMON_LIST_ERROR,
     FETCH_POKEMON_LIST_START,
     FETCH_POKEMON_LIST_SUCCESS,
-    SET_CURRENT_PAGE
+    SET_CURRENT_PAGE,
+    FETCH_POKEMON_ITEM_ERROR,
+    FETCH_POKEMON_ITEM_START,
+    FETCH_POKEMON_ITEM_SUCCESS
 } from '../actonTypes'
 
-import {fetchPokemonListApi} from "../service";
+import {
+    fetchPokemonListApi,
+    fetchPokemonItemApi
+} from "../service";
 import {
     getPagesCount,
-    pagesArr
+    pagesArr,
+    getImageUrl
 } from "../selectors";
 
 export const fetchPokemonList = (data) => async dispatch => {
@@ -17,7 +24,7 @@ export const fetchPokemonList = (data) => async dispatch => {
     });
 
     try {
-        const pokemonList = await fetchPokemonListApi(data);
+        const pokemonList = await fetchPokemonListApi(data - 1);
         const count = await getPagesCount(pokemonList.count);
         const countArray = await pagesArr(count);
         dispatch({
@@ -37,9 +44,31 @@ export const fetchPokemonList = (data) => async dispatch => {
     }
 };
 
-export const setCurrentPage = (data) => (dispatch) =>{
+export const setCurrentPage = (data) => (dispatch) => {
     dispatch({
         type: SET_CURRENT_PAGE,
         payload: data
     })
+};
+
+
+export const fetchPokemonItem = (url) => async dispatch => {
+    dispatch({
+        type: FETCH_POKEMON_ITEM_START
+    });
+    try {
+        const pokemon = await fetchPokemonItemApi(url);
+        const imageUrl = getImageUrl(pokemon);
+        dispatch({
+            type: FETCH_POKEMON_ITEM_SUCCESS,
+            payload: {imageUrl}
+        })
+    }
+    catch (e) {
+        dispatch({
+            type: FETCH_POKEMON_ITEM_ERROR,
+            payload: e,
+            error: true
+        })
+    }
 };

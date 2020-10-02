@@ -8,6 +8,7 @@ import {
     fetchPokemonList
 } from "../../actions";
 import {calcOffset} from "../../selectors";
+import {Link} from "react-router-dom";
 
 
 class PageButton extends Component {
@@ -17,13 +18,14 @@ class PageButton extends Component {
         const offset = calcOffset(pageNumber);
         return (
             <div className={`page-button ${clN}`}>
-                <button onClick={(e)=>{
-                    e.preventDefault();
-                    setCurrentPage(pageNumber);
-                    fetchPokemonList(offset)
-                }}>
-                    {pageNumber}
-                </button>
+                <Link to={`/page/${pageNumber}`}>
+                    <button onClick={(e) => {
+                        setCurrentPage(pageNumber);
+                        fetchPokemonList(offset)
+                    }}>
+                        {pageNumber}
+                    </button>
+                </Link>
             </div>
         )
     }
