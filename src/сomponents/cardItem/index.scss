@@ -7,8 +7,8 @@
   margin-left: 30px;
   border: 2px solid $blue-main;
   border-radius: 10px;
-  max-width: 300px;
-  height: 450px;
+  width: 300px;
+  height: 350px;
   overflow: hidden;
 
   &:hover{
@@ -20,8 +20,9 @@
 
   &__image{
     padding: 5px;
-    height: 400px;
+    height: 300px;
     border-bottom: 2px solid $blue-main;
+    overflow: hidden;
 
 
     img{

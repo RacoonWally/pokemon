@@ -4,7 +4,7 @@ import LoadingIndicator from 'react-loading-indicator'
 
 import {
     fetchPokemonList,
-    setCurrentPage
+    setCurrentPage,
 } from "../../actions";
 
 import './index.scss'
@@ -61,16 +61,17 @@ class PokemonList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const {pokemonList, loading} = state.mainPage;
+    const {pokemonList, loading, imageUrl} = state.mainPage;
     return {
         pokemonList,
-        loading
+        loading,
+        imageUrl
     }
 };
 
 const mapDispatchToProps = {
     fetchPokemonList,
-    setCurrentPage
+    setCurrentPage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonList);

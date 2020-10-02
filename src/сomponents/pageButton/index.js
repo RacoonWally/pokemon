@@ -13,6 +13,7 @@ import {Link} from "react-router-dom";
 
 class PageButton extends Component {
 
+
     render() {
         const {pageNumber, clN, setCurrentPage, fetchPokemonList} = this.props;
         const offset = calcOffset(pageNumber);
@@ -22,6 +23,7 @@ class PageButton extends Component {
                     <button onClick={(e) => {
                         setCurrentPage(pageNumber);
                         fetchPokemonList(offset)
+                        window.scrollTo(0, 0)
                     }}>
                         {pageNumber}
                     </button>

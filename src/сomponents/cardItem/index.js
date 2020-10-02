@@ -1,31 +1,51 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import {connect} from 'react-redux';
 
 import './index.scss'
 
 import {
-    fetchPokemonItem
-} from '../../actions'
+    fetchPokemonItemApi
+} from '../../service'
+import {getImageUrl} from "../../selectors";
+
 
 class CardItem extends Component {
 
+    state = {
+        imageUrl: "",
+        pokemon: {}
+    };
+
     componentDidMount() {
         const {url} = this.props.data;
-        const {fetchPokemonItem} = this.props;
-        fetchPokemonItem(url)
+        fetchPokemonItemApi(url).then((pokemon)=>{
+            this.setState({"pokemon": pokemon});
+            const imageUrl =  getImageUrl(pokemon);
+            this.setState({"imageUrl" : imageUrl});
+        })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.data.url !== this.props.data.url){
+            fetchPokemonItemApi(this.props.data.url).then((pokemon)=>{
+                this.setState({"pokemon": pokemon});
+                const imageUrl =  getImageUrl(pokemon);
+                this.setState({"imageUrl" : imageUrl});
+            })
+        }
     }
 
 
     render() {
         const {name} = this.props.data;
-        const {imageUrl} = this.props;
-        const url = {...imageUrl};
+        const {imageUrl} = this.state;
+        const {id} = this.state.pokemon;
+        console.log(this.state);
         return (
             <div className='card-item'>
-                <Link to={`/`}>
+                <Link to={`/item/${id}`}>
                     <div className='card-item__image'>
-                        <img src={url.imageUrl} alt=""/>
+                        <img src={imageUrl} alt=""/>
                     </div>
                     <div className='card-item__name'>
                         <p className='text'>
@@ -38,15 +58,6 @@ class CardItem extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    const {imageUrl} = state.mainPage;
-    return {
-        imageUrl
-    }
-};
 
-const mapDispatchToProps = {
-    fetchPokemonItem
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardItem);
+export default CardItem;

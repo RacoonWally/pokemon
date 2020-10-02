@@ -6,20 +6,12 @@ import {
 } from '../actonTypes'
 
 const initialState = {
-    mainPage: {
-        // pokemonList: [],
-        // count: 1,
-        // currentPage: 1,
-        // perPage:10,
-        // countArray: [1],
-        // loading: false,
-        // imageUrl: ''
-    }
+    mainPage: {}
 };
 
 export default (state = initialState, {type, payload}) => {
     switch (type) {
-        case FETCH_POKEMON_LIST_SUCCESS:{
+        case FETCH_POKEMON_LIST_SUCCESS: {
             const {pokemonList, count, countArray} = payload;
             return {
                 ...state,
@@ -42,19 +34,14 @@ export default (state = initialState, {type, payload}) => {
                 error: payload.error
             }
         }
-        case FETCH_POKEMON_LIST_START:{
+        case FETCH_POKEMON_LIST_START: {
             return {
                 ...state,
                 loading: true
             }
         }
-        case FETCH_POKEMON_ITEM_SUCCESS:{
-            const imageUrl = payload;
-            return {
-                ...state,
-                imageUrl
-            }
-        }
-        default: return state;
+
+        default:
+            return state;
     }
 }

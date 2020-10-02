@@ -7,16 +7,10 @@ const NavBar = () => {
     return (
         <div className='nav-bar'>
             <div className='nav-bar__item'>
-                <Link className='link' to='/'>Lorem</Link>
+                <Link className='link' to='/page/1'>На первую страницу</Link>
             </div>
             <div className='nav-bar__item'>
-                <Link className='link' to='/'>Lorem</Link>
-            </div>
-            <div className='nav-bar__item'>
-                <Link className='link' to='/'>Lorem</Link>
-            </div>
-            <div className='nav-bar__item'>
-                <Link className='link' to='/'>Lorem</Link>
+                <Link className='link' to='/'>На последнюю страницу</Link>
             </div>
         </div>
     )

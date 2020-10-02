@@ -10,13 +10,15 @@ import {
 
 import {
     fetchPokemonListApi,
-    fetchPokemonItemApi
+    fetchPokemonItemApi,
+    _apiBase
 } from "../service";
 import {
     getPagesCount,
     pagesArr,
     getImageUrl
 } from "../selectors";
+
 
 export const fetchPokemonList = (data) => async dispatch => {
     dispatch({
@@ -52,19 +54,17 @@ export const setCurrentPage = (data) => (dispatch) => {
 };
 
 
-export const fetchPokemonItem = (url) => async dispatch => {
+export const fetchPokemonItem = (id) => async dispatch => {
     dispatch({
         type: FETCH_POKEMON_ITEM_START
     });
     try {
-        const pokemon = await fetchPokemonItemApi(url);
-        const imageUrl = getImageUrl(pokemon);
+        const pokemon = await fetchPokemonItemApi(`${_apiBase}/${id}`);
         dispatch({
             type: FETCH_POKEMON_ITEM_SUCCESS,
-            payload: {imageUrl}
+            payload: {pokemon}
         })
-    }
-    catch (e) {
+    } catch (e) {
         dispatch({
             type: FETCH_POKEMON_ITEM_ERROR,
             payload: e,
