@@ -3,11 +3,13 @@ import {
     FETCH_POKEMON_LIST_ERROR,
     FETCH_POKEMON_LIST_SUCCESS,
     SET_CURRENT_PAGE,
-    FETCH_ALL_POKEMON_SUCCESS
+    FETCH_ALL_POKEMON_SUCCESS,
+    SET_ACTIVE_CLASS
 } from '../actonTypes'
 
 const initialState = {
-    mainPage: {}
+    mainPage: {},
+    active: false
 };
 
 export default (state = initialState, {type, payload}) => {
@@ -46,6 +48,13 @@ export default (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 allPokemonList
+            }
+        }
+        case SET_ACTIVE_CLASS:{
+            const {active} = payload;
+            return {
+                ...state,
+                active
             }
         }
         default:

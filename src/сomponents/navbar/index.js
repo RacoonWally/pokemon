@@ -4,7 +4,8 @@ import {Link} from "react-router-dom";
 
 import {
     setCurrentPage,
-    fetchPokemonList
+    fetchPokemonList,
+    setActiveClass
 } from "../../actions";
 import {calcOffset} from "../../selectors";
 
@@ -15,13 +16,15 @@ class NavBar extends Component {
 
 
     render() {
-        const {setCurrentPage, fetchPokemonList, countArray = []} = this.props;
+        const {setCurrentPage, fetchPokemonList, countArray = [], setActiveClass, active} = this.props;
         const lastPage = countArray.length;
 
         return (
             <div className='nav-bar'>
                 <div className='nav-bar__item'>
-                    <div className='nav-bar__text-link'>
+                    <div className='nav-bar__text-link' onClick={()=> {
+                        setActiveClass(!active);
+                    }}>
                         <p className='text'>Посмотреть всех</p>
                     </div>
                 </div>
@@ -48,15 +51,17 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const {countArray} = state.mainPage;
+    const {countArray, active} = state.mainPage;
     return {
-        countArray
+        countArray,
+        active
     }
 };
 
 const mapDispatchToProps = {
     setCurrentPage,
-    fetchPokemonList
+    fetchPokemonList,
+    setActiveClass
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

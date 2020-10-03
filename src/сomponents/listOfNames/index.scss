@@ -1,0 +1,28 @@
+@import "../../colors";
+
+.list-of-names{
+  display: none;
+  padding: 10px 5px 10px 10px;
+  background: $blue-main;
+  border-top: 1px solid white;
+
+  &__container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__item{
+    margin-right: 5px;
+    color: $yellow;
+
+    &:hover{
+      cursor: pointer;
+      color: $aqua-link;
+    }
+  }
+}
+
+.active{
+  display: block;
+}

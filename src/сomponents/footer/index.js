@@ -13,30 +13,18 @@ const Footer = () => {
                 <div className='footer__container'>
                     <div className='footer__links-group'>
                        <div className='footer__link'>
-                           <Link to={'/'} className='link'>PokeLink</Link>
+                           <Link to={'https://www.pokemon.com/ru/'} className='link'>Pokemon.com</Link>
                        </div>
                         <div className='footer__link'>
-                            <Link to={'/'} className='link'>PokeLink</Link>
-                        </div>
-                        <div className='footer__link'>
-                            <Link to={'/'} className='link'>PokeLink</Link>
-                        </div>
-                        <div className='footer__link'>
-                            <Link to={'/'} className='link'>PokeLink</Link>
+                            <Link to={'https://pokemongolife.ru/pokemony/'} className='link'>Pokemongolife.ru</Link>
                         </div>
                     </div>
                     <div className='footer__links-group'>
                         <div className='footer__link'>
-                            <Link to={'/'} className='link'>PokeLink</Link>
+                            <Link to={'https://pokemon.gameinfo.io/ru'} className='link'>Pokemon.gameinfo.io</Link>
                         </div>
                         <div className='footer__link'>
-                            <Link to={'/'} className='link'>PokeLink</Link>
-                        </div>
-                        <div className='footer__link'>
-                            <Link to={'/'} className='link'>PokeLink</Link>
-                        </div>
-                        <div className='footer__link'>
-                            <Link to={'/'} className='link'>PokeLink</Link>
+                            <Link to={'https://poke-universe.ru/'} className='link'>Poke-universe.ru</Link>
                         </div>
                     </div>
                 </div>

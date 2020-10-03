@@ -8,7 +8,8 @@ import {
     FETCH_POKEMON_ITEM_SUCCESS,
     FETCH_ALL_POKEMON_ERROR,
     FETCH_ALL_POKEMON_START,
-    FETCH_ALL_POKEMON_SUCCESS
+    FETCH_ALL_POKEMON_SUCCESS,
+    SET_ACTIVE_CLASS
 } from '../actonTypes'
 
 import {
@@ -20,6 +21,7 @@ import {
     getPagesCount,
     pagesArr
 } from "../selectors";
+
 
 
 export const fetchPokemonList = (data) => async dispatch => {
@@ -96,4 +98,12 @@ export const fetchAllPokemon = (count) => async dispatch => {
             error: true
         })
     }
+};
+
+
+export const setActiveClass = (active= false) => dispatch => {
+  dispatch({
+      type: SET_ACTIVE_CLASS,
+      payload: {active}
+  })
 };
