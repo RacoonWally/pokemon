@@ -17,4 +17,13 @@
       color: $yellow;
     }
   }
+
+  &__text-link{
+    color: $yellow;
+
+    &:hover{
+      cursor: pointer;
+      color: $aqua-link;
+    }
+  }
 }

@@ -44,8 +44,6 @@ class PokemonList extends Component {
             )
 
         }
-
-
         return (
             <div className='pokemon-list'>
                 <div className='pokemon-list__cards'>
@@ -53,11 +51,7 @@ class PokemonList extends Component {
                 </div>
             </div>
         )
-
-
     }
-
-
 }
 
 const mapStateToProps = (state) => {

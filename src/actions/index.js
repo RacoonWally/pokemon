@@ -5,7 +5,10 @@ import {
     SET_CURRENT_PAGE,
     FETCH_POKEMON_ITEM_ERROR,
     FETCH_POKEMON_ITEM_START,
-    FETCH_POKEMON_ITEM_SUCCESS
+    FETCH_POKEMON_ITEM_SUCCESS,
+    FETCH_ALL_POKEMON_ERROR,
+    FETCH_ALL_POKEMON_START,
+    FETCH_ALL_POKEMON_SUCCESS
 } from '../actonTypes'
 
 import {
@@ -15,8 +18,7 @@ import {
 } from "../service";
 import {
     getPagesCount,
-    pagesArr,
-    getImageUrl
+    pagesArr
 } from "../selectors";
 
 
@@ -67,6 +69,29 @@ export const fetchPokemonItem = (id) => async dispatch => {
     } catch (e) {
         dispatch({
             type: FETCH_POKEMON_ITEM_ERROR,
+            payload: e,
+            error: true
+        })
+    }
+};
+
+
+export const fetchAllPokemon = (count) => async dispatch => {
+    dispatch({
+        type: FETCH_ALL_POKEMON_START
+    });
+
+    try {
+        const allPokemonList = await fetchPokemonListApi(0, count);
+        dispatch({
+            type: FETCH_ALL_POKEMON_SUCCESS,
+            payload: {
+                allPokemonList
+            }
+        })
+    } catch (e) {
+        dispatch({
+            type: FETCH_ALL_POKEMON_ERROR,
             payload: e,
             error: true
         })

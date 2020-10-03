@@ -18,14 +18,15 @@ class PageButtonList extends Component {
                     {
                         countArray.map((item, key) => {
                             return (
-                                <PageButton clN={currentPage === item ? "page-button_active":"" } pageNumber={item} key={key}/>
+                                <PageButton clN={currentPage === item ? "page-button_active" : ""} pageNumber={item}
+                                            key={key}/>
                             )
                         })
                     }
                 </div>
             )
         }
-        else return (
+        return (
             <div className='page-button-list'>
                 <PageButton pageNumber='1'/>
             </div>

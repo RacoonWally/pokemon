@@ -35,12 +35,10 @@ class CardItem extends Component {
         }
     }
 
-
     render() {
         const {name} = this.props.data;
         const {imageUrl} = this.state;
         const {id} = this.state.pokemon;
-        console.log(this.state);
         return (
             <div className='card-item'>
                 <Link to={`/item/${id}`}>
@@ -57,7 +55,6 @@ class CardItem extends Component {
         )
     }
 }
-
 
 
 export default CardItem;

@@ -52,7 +52,6 @@ class ItemBody extends Component {
     render() {
         const {pokemon} = this.props;
         const {abilities = [], base_experience, forms, height, name, sprites} = {...pokemon};
-        console.log(forms);
         if (pokemon !== undefined) {
             const image = sprites.other.dream_world.front_default;
             return (

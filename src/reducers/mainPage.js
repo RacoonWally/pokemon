@@ -2,7 +2,8 @@ import {
     FETCH_POKEMON_LIST_START,
     FETCH_POKEMON_LIST_ERROR,
     FETCH_POKEMON_LIST_SUCCESS,
-    SET_CURRENT_PAGE, FETCH_POKEMON_ITEM_SUCCESS
+    SET_CURRENT_PAGE,
+    FETCH_ALL_POKEMON_SUCCESS
 } from '../actonTypes'
 
 const initialState = {
@@ -40,7 +41,13 @@ export default (state = initialState, {type, payload}) => {
                 loading: true
             }
         }
-
+        case FETCH_ALL_POKEMON_SUCCESS: {
+            const {allPokemonList} = payload;
+            return {
+                ...state,
+                allPokemonList
+            }
+        }
         default:
             return state;
     }
